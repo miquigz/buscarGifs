@@ -3,8 +3,8 @@
     <h3>Gifs-App</h3>
     <hr class="text-white">
 
-    <div class="bg-white list-group list-reset mt-1">
-      <a href="#" class="btn btn-success text-secondary">Dashboard</a>
+    <div class="bg-white list-group list-reset mt-1" *ngFor="let ele of this.history">
+      <a href="#" class="btn btn-success text-secondary">{{ele | titlecase}}</a>
     </div>
 
 </div>

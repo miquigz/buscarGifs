@@ -11,11 +11,10 @@ export class SearchComponent {
 
   constructor(private gifsService:GifsService) { }
 
-  public buscar( event:any):void{
+  public buscar():void{
     // console.log(event.target.value)
-        // this.gifsService.buscarGifs(this.txtBuscar.nativeElement.value)
-    this.gifsService.buscarGifs(event.target.value);
-
+    this.gifsService.buscarGifs(this.txtBuscar.nativeElement.value)
+    // this.gifsService.buscarGifs(event.target.value);
 
     this.txtBuscar.nativeElement.value = '';
     //"vaciamos" input
