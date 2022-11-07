@@ -17,9 +17,10 @@ export class GifsService {
     return [...this._history]; //Rompemos la relacion
   }
 
-
-  constructor( private http:HttpClient ) { }
-
+  constructor( private http:HttpClient ) { 
+    this._history = JSON.parse(localStorage.getItem('history')!) || [];
+    this.results = JSON.parse(localStorage.getItem('results')!) || [];
+  }
 
   //nos aseguramos de que tenga algun valor por defecto
   buscarGifs(query:string = ''){
@@ -39,11 +40,9 @@ export class GifsService {
     // this.http.get(endpoint-url-a-pedir-el-get)
     this.http.get<SearchGifsResponse>(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
     .subscribe( (response)=>{
-      console.log(response);
       this.results = response.data;
-    })
-    console.log(this._history);
+      localStorage.setItem('results', JSON.stringify( this.results )  );
+    })  
   }
 
-  
 }
