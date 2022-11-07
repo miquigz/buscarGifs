@@ -1,10 +1,10 @@
 <div class="row">
     <div *ngFor="let ele of this.results"
-    class="col-md-4 col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <img [src]="ele.images.downsized_medium.url" [alt]="ele.title">
-                <p class="card-text">
+    class="col-md-4 col-sm-6 animate__animated animate__fadeIn">
+        <div class="card mb-2" style="min-height: 26rem;">
+            <div class="card-body bg-secondary rounded border border-light mb-2">
+                <img class="card-img" [src]="ele.images.downsized_medium.url" [alt]="ele.title">
+                <p class="card-text text-center mt-3 text-success">
                     {{ele.title}}
                 </p>
             </div>

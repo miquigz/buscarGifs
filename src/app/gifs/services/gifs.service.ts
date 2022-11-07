@@ -40,8 +40,6 @@ export class GifsService {
       .set('api_key', this.apiKey)
       .set('limit', '10')
       .set('q', query);
-    console.log(params.toString());
-
     // this.http.get(endpoint-url-a-pedir-el-get)
     this.http.get<SearchGifsResponse>(`${this.serviceUrl}/search`, {params})
     .subscribe( (response)=>{

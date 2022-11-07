@@ -1,12 +1,10 @@
 
 <div class="bg-dark border-right p-3" id="sidebar">
-    <h3>Gifs-App</h3>
+    <h3 class="animate__animated animate__bounce">Gifs-App</h3>
     <hr class="text-white">
-
-    <div class="bg-white list-group list-reset mt-1" >
+    <div class="list-group list-reset mt-1" >
       <a *ngFor="let ele of this.history"
       (click)="buscar(ele)"
-      class="btn btn-success text-secondary">{{ele | titlecase}}</a>
+      class="btn btn-success text-secondary mt-1 animate__animated animate__zoomIn">{{ele | titlecase}}</a>
     </div>
-
 </div>
