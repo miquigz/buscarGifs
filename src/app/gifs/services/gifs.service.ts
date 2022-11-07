@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { Gif, SearchGifsResponse } from '../interfaces/gifs.interface';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ export class GifsService {
   private _history: string[] = [];
   private apiKey:string = 'SMwBofVmh3U66OSfa3HzEKejBdet4JFY';
 
-  public results: any[] = [];
+  public results: Gif[] = [];
 
   get history(){
     return [...this._history]; //Rompemos la relacion
@@ -31,11 +32,13 @@ export class GifsService {
     if( !this._history.includes(query)){
       this._history.unshift(query);
       this._history = this._history.splice(0,10);
+
+      localStorage.setItem('history', JSON.stringify(this._history));
     }
 
     // this.http.get(endpoint-url-a-pedir-el-get)
-    this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
-    .subscribe( (response:any )=>{
+    this.http.get<SearchGifsResponse>(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
+    .subscribe( (response)=>{
       console.log(response);
       this.results = response.data;
     })
