@@ -10,6 +10,8 @@ export class GifsService {
   private _history: string[] = [];
   private apiKey:string = 'SMwBofVmh3U66OSfa3HzEKejBdet4JFY';
 
+  public results: any[] = [];
+
   get history(){
     return [...this._history]; //Rompemos la relacion
   }
@@ -31,7 +33,13 @@ export class GifsService {
       this._history = this._history.splice(0,10);
     }
 
-    console.log(this._history); 
+    // this.http.get(endpoint-url-a-pedir-el-get)
+    this.http.get(`https://api.giphy.com/v1/gifs/search?api_key=${this.apiKey}&q=${query}&limit=10`)
+    .subscribe( (response:any )=>{
+      console.log(response);
+      this.results = response.data;
+    })
+    console.log(this._history);
   }
 
   

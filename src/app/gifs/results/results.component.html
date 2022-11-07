@@ -1,4 +1,14 @@
-<p>results works!</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum, beatae. Tenetur rerum perspiciatis, ut
-    aliquam ea nulla consectetur exercitationem eveniet possimus nemo ratione distinctio quae iusto cumque
-    neque repellat reprehenderit.</p>
+<div class="row">
+    <div *ngFor="let ele of this.results"
+    class="col-md-4 col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <img [src]="ele.images.downsized_medium.url" [alt]="ele.title">
+                <p class="card-text">
+                    {{ele.images.downsized_medium.url}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
